@@ -8,11 +8,11 @@
 Знакомство с проектированием многослойной архитектуры Web-API (веб-приложений, микро-сервисов).
 Сооздание микросервиса, реализующего CRUD  на примере интернет магазина
 ### *Как запустить*
-_Версия java - openjdk-11-jdk м СУБД PostgreSQL_
+_Версия java - openjdk-11-jdk и СУБД PostgreSQL_
 ---
 
 1.Загрузите проект из Github. Для клонирования репозитория необходимо выполнить команду:
-`git clone https://github.com/vovan13347/lab.git`
+`git clone https://github.com/vovan13347/JavaShop.git`
 
 2.Необходимо встроить базу данных виртуальную среду . Установите [Docker Desktop](https://www.docker.com/products/docker-desktop) и запустите его
 
