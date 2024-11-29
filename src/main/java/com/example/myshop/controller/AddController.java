@@ -62,4 +62,14 @@ public class AddController {
         return hostValueGetter.getHostId();
     }
 
+    @GetMapping(value = "/orders")
+    public List<Order> findAllOrders() {
+        return orderService.findAllOrders();
+    }
+
+    @GetMapping(value = "/orders/{id}")
+    public Order findOrderById(@PathVariable("id") Long id) {
+        return orderService.findById(id);
+    }
+
 }
