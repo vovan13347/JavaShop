@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import java.net.InetAddress;
+import java.net.UnknownHostException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,8 +28,10 @@ public class MyController {
 
     @Value("${server.port}")
     private int serverPort;
+    
+	private String ip = HostValueGetter.getHostIp();
 
-    private String ip = InetAddress.getLoopbackAddress().getHostAddress();
+
 
     private final UserService userService;
     private final GoodsService goodsService;
@@ -47,7 +50,7 @@ public class MyController {
         HostValueGetter hostValueGetter = new HostValueGetter();
         model.addAttribute("localHostName", hostValueGetter.getHostId());
         model.addAttribute("UUID", hostValueGetter.uuid());
-        model.addAttribute("ip", ip);
+        model.addAttribute("ip", hostValueGetter.getip());
         model.addAttribute("serverPort", serverPort);
         return "index";
     }

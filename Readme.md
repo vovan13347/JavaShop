@@ -48,3 +48,5 @@ _Версия java - openjdk-11-jdk и СУБД PostgreSQL_
 В ответ будет получен JSON в виде {hostname: "hostname"}.
 
 
+Test
+Test2
