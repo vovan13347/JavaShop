@@ -20,8 +20,10 @@ _Версия java - openjdk-11-jdk и СУБД PostgreSQL_
 `mvn clean package spring-boot:repackage`
 
 4.В терминале Docker строим контейнер с нашим приложением  и запускаем  следующей командой:
-`docker-compose up --build`, а чтобы остановить  используете команду `docker-compose down`  
-  
+`docker-compose up --build`, а чтобы остановить  используете команду `docker-compose down`
+
+5.В терминале  запускаем приложение следующей командой: 
+`mvn spring-boot:run`
   ---
 ### *Примеры CURL запросов:*
 

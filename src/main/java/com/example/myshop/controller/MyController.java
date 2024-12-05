@@ -15,11 +15,16 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import java.net.InetAddress;
-import java.net.UnknownHostException;
+
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.io.IOException;
+import java.net.URL;
 
 
 
@@ -28,11 +33,23 @@ public class MyController {
 
     @Value("${server.port}")
     private int serverPort;
+
+
+	//private String ip = hostValueGetter.getip();
+
+    @GetMapping(value = "hostname")
+    public String getHostIp() {
+    try {
+        URL url = new URL("http://checkip.amazonaws.com/");
+        BufferedReader in = new BufferedReader(new InputStreamReader(url.openStream()));
+        String ip = in.readLine();
+        return ip;
+    } catch (IOException e) {
+        e.printStackTrace();
+        return "Unable to get IP";
+    }
+}
     
-	private String ip = HostValueGetter.getHostIp();
-
-
-
     private final UserService userService;
     private final GoodsService goodsService;
     private final OrderService orderService;
@@ -50,7 +67,7 @@ public class MyController {
         HostValueGetter hostValueGetter = new HostValueGetter();
         model.addAttribute("localHostName", hostValueGetter.getHostId());
         model.addAttribute("UUID", hostValueGetter.uuid());
-        model.addAttribute("ip", hostValueGetter.getip());
+        model.addAttribute("ip", this.getHostIp());
         model.addAttribute("serverPort", serverPort);
         return "index";
     }
