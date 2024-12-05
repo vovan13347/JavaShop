@@ -18,7 +18,7 @@ ____
 2.Необходимо встроить базу данных виртуальную среду . Установите [Docker Desktop](https://www.docker.com/products/docker-desktop) и запустите его
 
 3.Для сборки приложения из командной строки с помощью maven, необходимо выполнить следующую команду из корневой директории проекта:
-`mvn clean package spring-boot:repackage`
+`mvn clean package spring-boot:repackage` или `mvn clean package`
 
 4.В терминале Docker строим контейнер с нашим приложением  и запускаем  следующей командой:
 `docker-compose up --build`, а чтобы остановить  используете команду `docker-compose down`
