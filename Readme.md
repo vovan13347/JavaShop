@@ -49,3 +49,47 @@ ____
 ` curl localhost:8080/api/myshop/hostname` 
 В ответ будет получен JSON в виде {hostname: "hostname"}.
 
+____
+### *Создание сервиса на Ubuntu-server:*
+
+1. Создать файл сервиса командой:
+`touch /etc/systemd/system/name_service.service`
+
+2. Создать файл сервиса командой:
+`sudo nano /etc/systemd/system/name_service.service`
+
+
+# name_service config
+____
+```
+[Unit]
+Description = описание сервиса
+After=network.target
+
+[Service]
+User=root
+Group=root
+WorkingDirectory=/projects/lab/myshop
+ExecStart=mvn spring-boot:run
+Restart=always
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target
+
+```
+
+3. перезапустить daemon командой:
+`sudo systemctl daemon-reload`
+
+4. активировать сервис, позволить ему стартовать во время запуска системы:
+`sudo systemctl enable name_service.service`
+
+5. запустить службу командой:
+`sudo systemctl start name_service.service`
+
+6. остановить активную службу:
+`sudo systemctl stop name_service.service`
+
+7. отключить автозапуск службы:
+`sudo systemctl disable name_service.service`
